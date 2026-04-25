@@ -1,0 +1,11 @@
+{
+  "name": "dp-proj-00-02-packages",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -ws"
+  }
+}
+
