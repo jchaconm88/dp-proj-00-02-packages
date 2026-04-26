@@ -1,4 +1,4 @@
-name: Publish packages (@dp/*) to GitHub Packages
+name: Publish packages (@jchaconm88/*) to GitHub Packages
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: "22"
           registry-url: "https://npm.pkg.github.com"
-          scope: "@dp"
+          scope: "@jchaconm88"
           cache: "npm"
 
       - name: Install
@@ -32,12 +32,12 @@ jobs:
       - name: Build workspaces
         run: npm run build
 
-      - name: Publish @dp/shared
-        run: npm publish -w @dp/shared
+      - name: Publish @jchaconm88/shared
+        run: npm publish -w @jchaconm88/shared
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish @dp/ui
-        run: npm publish -w @dp/ui
+      - name: Publish @jchaconm88/ui
+        run: npm publish -w @jchaconm88/ui
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
