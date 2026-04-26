@@ -1,5 +1,5 @@
 {
-  "name": "@jchaconm88/shared",
+  "name": "@jchaconm88/ui",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.js",
@@ -17,10 +17,18 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "vite build && tsc -p tsconfig.json --emitDeclarationOnly"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "primereact": ">=10",
+    "date-fns": ">=3"
   },
   "devDependencies": {
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vite": "^6",
+    "@vitejs/plugin-react": "^4",
+    "@types/react": "^19",
+    "primeicons": "^7.0.0"
   }
 }
-

@@ -1,0 +1,43 @@
+name: Publish packages (@dp/*) to GitHub Packages
+
+on:
+  push:
+    tags:
+      - "packages-v*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@dp"
+          cache: "npm"
+
+      - name: Install
+        run: npm ci
+
+      - name: Build workspaces
+        run: npm run build
+
+      - name: Publish @dp/shared
+        run: npm publish -w @dp/shared
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish @dp/ui
+        run: npm publish -w @dp/ui
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
