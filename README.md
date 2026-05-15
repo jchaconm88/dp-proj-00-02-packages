@@ -4,7 +4,7 @@ Repo de paquetes compartidos entre apps/servicios.
 
 ## Paquetes
 
-- `@dp/shared`: contrato compartido (ej. permisos `permissionCodes`).
+- `@jchaconm88/shared`: contrato compartido (ej. permisos `permissionCodes`).
 
 ## Local
 
